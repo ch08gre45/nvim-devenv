@@ -30,4 +30,4 @@ cd fzf
 echo "Installing .vimrc"
 mkdir -p ~/.config/nvim
 echo "source ~/.vimrc" > ~/.config/nvim/init.vim
-cp ${THIS_DIR}/.vimrc ~/.vimrc
+cp ${THIS_DIR}/vimrc ~/.vimrc
