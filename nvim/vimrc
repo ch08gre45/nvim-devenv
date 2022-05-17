@@ -99,6 +99,7 @@ set rtp+=~/Code/tools/fzf
 nnoremap <silent> <C-p> :FZF<CR>
 " Disable search highlight on ESC
 map <esc> :noh <CR>
+
 " Autoclose
 inoremap { {}<Esc>ha
 inoremap ( ()<Esc>ha
@@ -106,3 +107,6 @@ inoremap [ []<Esc>ha
 inoremap " ""<Esc>ha
 inoremap ' ''<Esc>ha
 inoremap ` ``<Esc>ha
+
+" Execute text as shell command and paste output
+nnoremap Q !!sh<CR>
