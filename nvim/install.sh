@@ -28,7 +28,7 @@ cd fzf
 ./install
 
 echo "Installing ripgrep"
-sudo apt-get install ripgrep
+sudo apt install -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
 echo "Installing .vimrc"
 mkdir -p ~/.config/nvim
