@@ -27,6 +27,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git
 cd fzf
 ./install
 
+echo "Installing ripgrep"
+sudo apt-get install ripgrep
+
 echo "Installing .vimrc"
 mkdir -p ~/.config/nvim
 echo "source ~/.vimrc" > ~/.config/nvim/init.vim

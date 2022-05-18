@@ -76,6 +76,7 @@ call plug#begin()
 
 " Make sure you use single quotes
 Plug 'EdenEast/nightfox.nvim' " Nightfox Vim-Plug
+Plug 'junegunn/fzf.vim' " FZF plugin for neovim
 
 " Initialize plugin system
 call plug#end()
@@ -95,8 +96,15 @@ set expandtab
 
 " Enable fzf
 set rtp+=~/Code/tools/fzf
-" FZF bindings
-nnoremap <silent> <C-p> :FZF<CR>
+" FZF GFiles enable - only look at files tracked by git
+nnoremap <C-p> :GFiles<CR>
+" Ripgrep
+nnoremap <C-g> :Rg<Cr>
+" Syntax highlight preview for file, gfiles and rg
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=? -complete=dir GFiles call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
+command! -bang -nargs=* Rg call fzf#vim#grep('rg --column --line-number --no-heading --color=always --smart-case -- '.shellescape(<q-args>), 1, fzf#vim#with_preview(), <bang>0)
+
 " Disable search highlight on ESC
 map <esc> :noh <CR>
 
