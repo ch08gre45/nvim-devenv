@@ -30,7 +30,7 @@ cd fzf
 echo "Installing ripgrep"
 sudo apt install -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
-echo "Installing .vimrc"
+echo "Installing .vimrc and configs"
 mkdir -p ~/.config/nvim
-echo "source ~/.vimrc" > ~/.config/nvim/init.vim
+cp ${THIS_DIR}/init.vim ~/.config/nvim/init.vim
 cp ${THIS_DIR}/vimrc ~/.vimrc
