@@ -32,5 +32,7 @@ sudo apt install -o Dpkg::Options::="--force-overwrite" bat ripgrep
 
 echo "Installing .vimrc and configs"
 mkdir -p ~/.config/nvim
+mkdir -p ~/.config/nvim/lua
+cp -rf ${THIS_DIR}/lua/* ~/.config/nvim/lua/
 cp ${THIS_DIR}/init.vim ~/.config/nvim/init.vim
 cp ${THIS_DIR}/vimrc ~/.vimrc

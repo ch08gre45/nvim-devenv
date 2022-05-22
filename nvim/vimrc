@@ -77,6 +77,7 @@ call plug#begin()
 " Make sure you use single quotes
 Plug 'EdenEast/nightfox.nvim' " Nightfox Vim-Plug
 Plug 'junegunn/fzf.vim' " FZF plugin for neovim
+Plug 'neovim/nvim-lspconfig' " LSP-config
 
 " Initialize plugin system
 call plug#end()
@@ -96,8 +97,16 @@ set expandtab
 
 " Enable fzf
 set rtp+=~/Code/tools/fzf
+" Detect if within a git repository
+silent! !git rev-parse --is-inside-work-tree
+if v:shell_error == 0
 " FZF GFiles enable - only look at files tracked by git
-nnoremap <C-p> :GFiles<CR>
+  noremap <C-p> :GFiles<CR>
+else
+" FZF Files enable
+  noremap <C-p> :Files<CR>
+endif
+
 " Ripgrep
 nnoremap <C-g> :Rg<Cr>
 " Syntax highlight preview for file, gfiles and rg
