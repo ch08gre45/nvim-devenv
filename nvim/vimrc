@@ -79,6 +79,19 @@ Plug 'EdenEast/nightfox.nvim' " Nightfox Vim-Plug
 Plug 'junegunn/fzf.vim' " FZF plugin for neovim
 Plug 'neovim/nvim-lspconfig' " LSP-config
 
+" LSP autocomplete
+" Autocomplete engine
+Plug 'hrsh7th/nvim-cmp'
+" Autocomplete sources
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+"Plug 'hrsh7th/cmp-cmdline'
+
+" Snippet expansion.
+Plug 'L3MON4D3/LuaSnip'
+Plug 'saadparwaiz1/cmp_luasnip'
+
 " Initialize plugin system
 call plug#end()
 
