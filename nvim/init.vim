@@ -1,3 +1,3 @@
 source ~/.vimrc
 
-lua require("lsp")
+lua require("_lsp_config")
