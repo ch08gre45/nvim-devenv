@@ -97,6 +97,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 -- map buffer local keybindings when the language server attaches
 local servers = {
     'gopls',
+    'csharp_ls',
     --'phpactor', 
 }
 for _, lsp in pairs(servers) do
