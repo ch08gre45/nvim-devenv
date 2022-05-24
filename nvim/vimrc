@@ -92,6 +92,18 @@ Plug 'hrsh7th/cmp-path'
 Plug 'L3MON4D3/LuaSnip'
 Plug 'saadparwaiz1/cmp_luasnip'
 
+" Treesitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv'
+
+" telescope requirements...
+Plug 'nvim-lua/popup.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
+
 " Initialize plugin system
 call plug#end()
 
@@ -114,10 +126,10 @@ set rtp+=~/Code/tools/fzf
 silent! !git rev-parse --is-inside-work-tree
 if v:shell_error == 0
 " FZF GFiles enable - only look at files tracked by git
-  noremap <C-p> :GFiles<CR>
+  noremap <C-p> :Telescope git_files<CR>
 else
 " FZF Files enable
-  noremap <C-p> :Files<CR>
+  noremap <C-p> :Telescope fd<CR>
 endif
 
 " Ripgrep
