@@ -120,6 +120,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+" Leader to space remap
+let mapleader = " "
+
 " Enable fzf
 set rtp+=~/Code/tools/fzf
 " Detect if within a git repository
@@ -166,5 +169,22 @@ inoremap ` ``<Esc>ha
 " Execute text as shell command and paste output
 nnoremap Q !!sh<CR>
 
-nnoremap <Leader>+ :vertical resize +5<CR>
-nnoremap <Leader>- :vertical resize -5<CR>
+nnoremap <leader>+ :vertical resize +5<CR>
+nnoremap <leader>- :vertical resize -5<CR>
+
+" Interact with system C-c C-v register
+" Paste
+xnoremap <leader>p "_dP
+" Yank into register
+nnoremap <leader>y "+y
+vnoremap <leader>y "+y
+" Yank line to register
+nmap <leader>Y "+Y
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+
+" Highlight text on yank
+augroup highlight_yank
+    autocmd!
+    autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
+augroup END
