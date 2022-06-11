@@ -112,6 +112,10 @@ call plug#end()
 " Enable relative numbers
 :set number relativenumber
 
+" Configure folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
