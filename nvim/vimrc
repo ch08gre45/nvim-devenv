@@ -115,6 +115,7 @@ call plug#end()
 " Configure folding
 set foldmethod=expr
 set foldexpr=nvim_treesitter#foldexpr()
+set foldlevel=99
 
 filetype plugin indent on
 " show existing tab with 4 spaces width
