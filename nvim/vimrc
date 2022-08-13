@@ -131,6 +131,9 @@ set expandtab
 " Leader to space remap
 let mapleader = " "
 
+" Show non printable characters
+set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+
 " Enable fzf
 set rtp+=~/Code/tools/fzf
 " Detect if within a git repository
