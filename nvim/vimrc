@@ -132,7 +132,7 @@ set expandtab
 let mapleader = " "
 
 " Show non printable characters
-set listchars=trail:·,precedes:«,extends:»,eol:↲,tab:▸\ 
+set listchars=trail:·,lead:·,precedes:«,extends:»,eol:↲,tab:▸\ 
 
 " Enable fzf
 set rtp+=~/Code/tools/fzf
@@ -199,3 +199,8 @@ augroup highlight_yank
     autocmd!
     autocmd TextYankPost * silent! lua require'vim.highlight'.on_yank({timeout = 40})
 augroup END
+
+" Toggle showing non printable characters
+noremap <F5> :set list!<CR>
+inoremap <F5> <C-o>:set list!<CR>
+cnoremap <F5> <C-c>:set list!<CR>
