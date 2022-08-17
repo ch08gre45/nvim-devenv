@@ -131,6 +131,9 @@ set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
 
+" enable global statusline, shows for last buffer
+set laststatus=3
+
 " Leader to space remap
 let mapleader = " "
 
