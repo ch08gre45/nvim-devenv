@@ -13,3 +13,12 @@ The script installs:
 - [Nightfox](https://github.com/EdenEast/nightfox.nvim) theme, sets nordfox colorscheme
 
 Everything is built from source.
+
+## Font
+
+With the addition of nvim-tree plugin, a patched font is required to display symbols. This requires some configurations steps.
+
+1. Go [here](https://www.nerdfonts.com/font-downloads)
+2. Pick a font and download it
+3. Extract the font to `~/.local/share/fonts/`
+4. Configure your terminal to use it

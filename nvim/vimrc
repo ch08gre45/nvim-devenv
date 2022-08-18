@@ -79,6 +79,10 @@ Plug 'EdenEast/nightfox.nvim' " Nightfox Vim-Plug
 Plug 'junegunn/fzf.vim' " FZF plugin for neovim
 Plug 'neovim/nvim-lspconfig' " LSP-config
 
+" File tree
+Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
+Plug 'kyazdani42/nvim-tree.lua'
+
 " LSP autocomplete
 " Autocomplete engine
 Plug 'hrsh7th/nvim-cmp'
@@ -210,3 +214,8 @@ augroup END
 noremap <F5> :set list!<CR>
 inoremap <F5> <C-o>:set list!<CR>
 cnoremap <F5> <C-c>:set list!<CR>
+
+" Enable netrw preview file in vertical split
+let g:netrw_preview = 1
+" Toggle nvim-tree
+nnoremap <leader>tr :NvimTreeToggle<CR>
