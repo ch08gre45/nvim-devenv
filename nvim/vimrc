@@ -29,6 +29,9 @@ endif
 " turn on this option as well
 set background=dark
 
+set exrc
+set secure
+
 " Search down into subfolders
 " Provide tab completion for file related tasks   
 set path+=**
