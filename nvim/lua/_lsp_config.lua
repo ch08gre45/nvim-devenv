@@ -98,7 +98,7 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 local servers = {
     'gopls',
     'csharp_ls',
-    'phpactor',
+    -- 'phpactor',
     'rust_analyzer'
 }
 for _, lsp in pairs(servers) do
