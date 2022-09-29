@@ -199,7 +199,7 @@ nnoremap <leader>- :vertical resize -5<CR>
 
 " Interact with system C-c C-v register
 " Paste
-xnoremap <leader>p "_dP
+xnoremap <leader>p "\"_dP"
 " Yank into register
 nnoremap <leader>y "+y
 vnoremap <leader>y "+y
