@@ -99,7 +99,8 @@ local servers = {
     'gopls',
     'csharp_ls',
     -- 'phpactor',
-    'rust_analyzer'
+    'rust_analyzer',
+    'intelephense'
 }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
