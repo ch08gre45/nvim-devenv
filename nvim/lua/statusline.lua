@@ -84,7 +84,7 @@ local function lsp()
         warnings = string.format("%%#Warning# w %s ",  count["warnings"])
     end
     if count["hints"] ~= 0 then
-        hints = string,format("%%#Hint# h %s ", count["hints"])
+        hints = string.format("%%#Hint# h %s ", count["hints"])
     end
     if count["info"] ~= 0 then
         info = string.format("%%#Info# i %s ", count["info"])
