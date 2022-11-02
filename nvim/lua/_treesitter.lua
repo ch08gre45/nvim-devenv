@@ -9,6 +9,7 @@ require'nvim-treesitter.configs'.setup {
       "html",
       "css",
       "yaml",
+      "query"
   },
   sync_install = false,
   highlight = {
