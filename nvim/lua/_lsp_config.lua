@@ -98,7 +98,6 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protoc
 local servers = {
     'gopls',
     'csharp_ls',
-    -- 'phpactor',
     'rust_analyzer',
     'intelephense'
 }
