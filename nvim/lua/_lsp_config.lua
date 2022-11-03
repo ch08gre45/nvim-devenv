@@ -99,7 +99,9 @@ local servers = {
     'gopls',
     'csharp_ls',
     'rust_analyzer',
-    'intelephense'
+    'intelephense',
+    'tsserver',
+    'eslint'
 }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
