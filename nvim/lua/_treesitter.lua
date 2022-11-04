@@ -3,6 +3,8 @@ require'nvim-treesitter.configs'.setup {
       "go",
       "php",
       "javascript",
+      "typescript",
+      "tsx",
       "lua",
       "bash",
       "c_sharp",
