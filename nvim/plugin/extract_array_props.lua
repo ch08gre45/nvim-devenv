@@ -1,6 +1,6 @@
 local ts_utils = require 'nvim-treesitter.ts_utils'
 local make_prop_query = function(varname)
-    local array_prop = vim.treesitter.parse_query(
+    local array_prop = vim.treesitter.query.parse(
         "php",
         "(subscript_expression\n" ..
         "    (variable_name\n" ..
@@ -14,7 +14,7 @@ local make_prop_query = function(varname)
     return array_prop
 end
 
-local func_def_query = vim.treesitter.parse_query(
+local func_def_query = vim.treesitter.query.parse(
 "php",
 [[
 (function_definition
