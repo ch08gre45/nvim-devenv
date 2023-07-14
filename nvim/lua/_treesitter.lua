@@ -12,7 +12,9 @@ require'nvim-treesitter.configs'.setup {
       "css",
       "yaml",
       "query",
-      "rust"
+      "rust",
+      "ocaml",
+      "glsl"
   },
   sync_install = false,
   highlight = {

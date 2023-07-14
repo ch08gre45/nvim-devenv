@@ -102,7 +102,8 @@ local servers = {
     'intelephense',
     'tsserver',
     'eslint',
-    'ocamllsp'
+    'ocamllsp',
+    'glslls'
 }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
