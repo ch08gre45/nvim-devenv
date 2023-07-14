@@ -101,7 +101,8 @@ local servers = {
     'rust_analyzer',
     'intelephense',
     'tsserver',
-    'eslint'
+    'eslint',
+    'ocamllsp'
 }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
