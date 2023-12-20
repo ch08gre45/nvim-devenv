@@ -118,6 +118,9 @@ Plug 'tpope/vim-commentary'
 " Golang
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+" Zig
+Plug 'ziglang/zig.vim'
+
 " Initialize plugin system
 call plug#end()
 
