@@ -35,7 +35,7 @@ local execute = function()
     end
 
     local padding_indexes_upper = {}
-    local padding_max = 0
+    local padding_max = padding_current_line
 
     -- find upper bound
     local line_bound_upper = line
