@@ -85,6 +85,8 @@ Plug 'neovim/nvim-lspconfig' " LSP-config
 " File tree
 Plug 'kyazdani42/nvim-web-devicons' " optional, for file icons
 Plug 'kyazdani42/nvim-tree.lua'
+" Oil
+Plug 'stevearc/oil.nvim'
 
 " LSP autocomplete
 " Autocomplete engine
