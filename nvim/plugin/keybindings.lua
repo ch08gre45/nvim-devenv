@@ -25,7 +25,8 @@ vim.keymap.set("i", "`", "``<Esc>ha", { silent = true })
 
 -- [Tab and window utilities]
 vim.keymap.set("n", "<leader>q", "<Cmd>q<CR>", { silent = true })
-vim.keymap.set("n", "<leader>tb", "<Cmd>tabnew<CR>", { silent = true })
+vim.keymap.set("n", "<leader>w", "<Cmd>w<CR>", { silent = true })
+vim.keymap.set("n", "<leader>e", "<Cmd>tabnew<CR>", { silent = true })
 -- Resize a window
 vim.keymap.set("n", "<M-,>", "<c-w>5<")
 vim.keymap.set("n", "<M-.>", "<c-w>5>")
