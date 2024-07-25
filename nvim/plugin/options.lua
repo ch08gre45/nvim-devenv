@@ -2,8 +2,6 @@ local opt = vim.opt
 
 opt.background = "dark"
 
-opt.exrc = true
-opt.secure = true
 -- Search down into subfolders
 -- Provide tab completion for file related tasks   
 table.insert(opt.path, "**")
