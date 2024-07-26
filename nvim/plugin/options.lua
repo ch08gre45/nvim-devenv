@@ -5,8 +5,9 @@ opt.background = "dark"
 -- Search down into subfolders
 -- Provide tab completion for file related tasks   
 table.insert(opt.path, "**")
--- Show (partial) command in status line
-opt.showcmd = true
+
+opt.showcmd = false
+opt.modeline = false
 -- Show matching brackets
 opt.showmatch = true
 -- Enable case insensitive matching
