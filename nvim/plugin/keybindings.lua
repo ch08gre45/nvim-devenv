@@ -37,7 +37,7 @@ vim.keymap.set("n", "<M-s>", "<C-W>-")
 vim.keymap.set("n", "<leader><leader>x", "<Cmd>source %<CR>", { silent = true })
 
 -- Open file_name:line_no records by pressing F2 (equivalent to gF)
-vim.keymap.set("n", "<F2>", "<Cmd>vertical wincmd F<CR>", { silent = true })
+vim.keymap.set("n", "<leader>f", "<Cmd>vertical wincmd F<CR>", { silent = true })
 
 -- Execute shell command and replace it with the output
 vim.keymap.set("n", "Q", "!!sh<CR>")
