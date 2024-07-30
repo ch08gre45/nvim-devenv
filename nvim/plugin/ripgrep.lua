@@ -39,8 +39,12 @@ local rg_search = function()
         return
     end
 
+    local count_matches = 0
+    vim.api.nvim_buf_set_lines(M.search_buf_no, 2, 2, false, {"Searching..."})
     vim.fn.jobstart(query[1]:gsub("^rg", "rg --line-number --no-heading --field-match-separator=__f__"), {
-        stdout_buffered = true,
+        on_exit = function(job_id, exit_code, event_type)
+            vim.api.nvim_buf_set_lines(M.search_buf_no, 2, 3, false, {"Found " .. count_matches .. " matches.", ""})
+        end,
         on_stdout = function(_, data)
             local processed_data = {}
             for k, line in pairs(data) do
@@ -48,6 +52,7 @@ local rg_search = function()
                     local s1,e1 = string.find(line, "__f__")
                     local s2,e2 = string.find(line, "__f__", e1)
                     if s1 ~= nil and s2 ~= nil and e1 ~= nil and e2 ~= nil then
+                        count_matches = count_matches + 1
                         local name = string.sub(line, 0, s1-1)
                         local line_no = string.sub(line, e1+1, s2-1)
                         local rest = string.sub(line, e2+1, string.len(line))
