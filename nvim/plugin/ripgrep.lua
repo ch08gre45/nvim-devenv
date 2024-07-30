@@ -1,15 +1,21 @@
 local M = {}
 
 M.search_buf_no = 0
+M.namespace_id = -1
+M.hlgroup_files = "DiagnosticVirtualTextInfo"
 M.query = "rg -e='__query__' ./"
 M.sep = "---------------------"
 M.filetype = "ripgrep"
 
-local open_rg_buffer = function(query_external)
+local rg_open_buffer = function(query_external)
     M.search_buf_no = vim.api.nvim_create_buf(false, true)
     vim.api.nvim_buf_set_option(M.search_buf_no, "filetype", M.filetype)
     local window_handle = vim.api.nvim_get_current_win()
     vim.api.nvim_win_set_buf(window_handle, M.search_buf_no)
+
+    if M.namespace_id == -1 then
+        M.namespace_id = vim.api.nvim_create_namespace("RipgrepSearch")
+    end
 
     -- Replace ripgrep keybinds when in this buffer
     vim.keymap.set("n", "<C-f>", "<Cmd>RipgrepSearch<CR>", { silent = true, buffer = M.search_buf_no })
@@ -41,12 +47,14 @@ local rg_search = function()
 
     local count_matches = 0
     vim.api.nvim_buf_set_lines(M.search_buf_no, 2, 2, false, {"Searching..."})
+    local current_buf_line_count = vim.api.nvim_buf_line_count(M.search_buf_no)
     vim.fn.jobstart(query[1]:gsub("^rg", "rg --line-number --no-heading --field-match-separator=__f__"), {
         on_exit = function(job_id, exit_code, event_type)
             vim.api.nvim_buf_set_lines(M.search_buf_no, 2, 3, false, {"Found " .. count_matches .. " matches.", ""})
         end,
         on_stdout = function(_, data)
             local processed_data = {}
+            local highlights = {}
             for k, line in pairs(data) do
                 if string.len(line) > 0 then
                     local s1,e1 = string.find(line, "__f__")
@@ -59,10 +67,16 @@ local rg_search = function()
                         table.insert(processed_data, name..":"..line_no)
                         table.insert(processed_data, rest)
                         table.insert(processed_data, "")
+
+                        table.insert(highlights, current_buf_line_count)
+                        current_buf_line_count = current_buf_line_count + 3
                     end
                 end
             end
             vim.api.nvim_buf_set_lines(M.search_buf_no, -1, -1, false, processed_data)
+            for _, line_no in pairs(highlights) do
+                vim.api.nvim_buf_add_highlight(M.search_buf_no, M.namespace_id, M.hlgroup_files, line_no, 0, -1)
+            end
         end,
         on_stderr = function(_, data)
             vim.api.nvim_buf_set_lines(M.search_buf_no, -1, -1, false, data)
@@ -83,16 +97,6 @@ local get_visual_selection = function ()
 	end
 end
 
-local rg_with_query = function()
-    local query = get_visual_selection()
-    if query == "" or query == nil then
-        print("No text highlighted")
-        return
-    end
-    open_rg_buffer(query)
-    rg_search()
-end
-
 local escape = function(text)
     local escaped_text = text
     escaped = escaped:gsub("(", "\\(")
@@ -103,14 +107,20 @@ local setup_commands = function()
     vim.api.nvim_create_user_command(
         "Ripgrep",
         function (opts)
-            open_rg_buffer()
+            rg_open_buffer()
         end, 
         { nargs = 0 }
     )
     vim.api.nvim_create_user_command(
         "RipgrepWithQuery",
         function (opts)
-            rg_with_query()
+            local query = get_visual_selection()
+            if query == "" or query == nil then
+                print("No text highlighted")
+                return
+            end
+            rg_open_buffer(query)
+            rg_search()
         end, 
         { nargs = 0 }
     )
