@@ -3,7 +3,7 @@ local M = {}
 M.search_buf_no = 0
 M.namespace_id = -1
 M.hlgroup_files = "DiagnosticVirtualTextInfo"
-M.query = "rg -e='__query__' ./"
+M.query = 'rg -F -e="__query__" ./'
 M.sep = "---------------------"
 M.filetype = "ripgrep"
 
@@ -23,6 +23,7 @@ local rg_open_buffer = function(query_external)
 
     local query = M.query
     if query_external ~= nil and query_external ~= "" then
+        query_external = query_external:gsub("\"", "\\\"")
         query = M.query:gsub("__query__", query_external)
     end
     vim.api.nvim_buf_set_lines(M.search_buf_no, 0, 0, false, {query, M.sep})
@@ -95,12 +96,6 @@ local get_visual_selection = function ()
 	else
 		return ''
 	end
-end
-
-local escape = function(text)
-    local escaped_text = text
-    escaped = escaped:gsub("(", "\\(")
-    escaped = escaped:gsub(")", "\\)")
 end
 
 local setup_commands = function()
