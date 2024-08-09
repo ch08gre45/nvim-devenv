@@ -2,7 +2,7 @@ local M = {}
 
 M.search_buf_no = 0
 M.namespace_id = -1
-M.hlgroup_files = "DiagnosticVirtualTextInfo"
+M.hlgroup_files = "Constant"
 M.query = 'rg -F -e="__query__" ./'
 M.sep = "---------------------"
 M.filetype = "ripgrep"
