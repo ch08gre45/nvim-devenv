@@ -12,7 +12,8 @@ dap.configurations.cs = {
     name = "launch - netcoredbg",
     request = "launch",
     env = function ()
-        local launchSettings = vim.fs.joinpath(vim.fn.getcwd(), "Properties", "launchSettings.json")
+        local current_path = vim.fn.expand('%:p:h')
+        local launchSettings = vim.fs.joinpath(current_path, "Properties", "launchSettings.json")
 
         local stat = vim.uv.fs_stat(launchSettings)
         if stat == nil then return nil end
@@ -22,13 +23,21 @@ dap.configurations.cs = {
 
         local profiles = vim.tbl_keys(result.profiles)
         local profileName = vim.fn.input('Profile name:', profiles[1])
-        print("Chosen" .. profileName)
         local profile = result.profiles[profileName]
-        print("exit " .. vim.inspect(profile))
+        print(vim.inspect(profile))
         return profile.environmentVariables
     end,
     program = function()
-        return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        local current_path = vim.fn.expand('%:p:h')
+        local csproj_file = vim.fn.glob(current_path .. '/*.csproj')
+
+        if csproj_file == "" then
+            return ""
+        end
+        local csproj_name = vim.fn.fnamemodify(csproj_file, ":t:r")
+        local matching_dll = csproj_name .. '.dll'
+        print(vim.fs.joinpath(current_path, '/bin/Debug/net8.0/', matching_dll))
+        return vim.fs.joinpath(current_path, '/bin/Debug/net8.0/', matching_dll)
     end,
   },
 }
