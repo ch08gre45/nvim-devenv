@@ -11,9 +11,9 @@ vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
 -- Show / Hide special characters
-vim.keymap.set("n", "<F5>", "<Cmd>set list!<CR>", { silent = true })
-vim.keymap.set("i", "<F5>", "<C-o><Cmd>set list!<CR>", { silent = true })
-vim.keymap.set("c", "<F5>", "<C-c><Cmd>set list!<CR>", { silent = true })
+vim.keymap.set("n", "<F4>", "<Cmd>set list!<CR>", { silent = true })
+vim.keymap.set("i", "<F4>", "<C-o><Cmd>set list!<CR>", { silent = true })
+vim.keymap.set("c", "<F4>", "<C-c><Cmd>set list!<CR>", { silent = true })
 
 -- Autoclose quotes and brackets
 vim.keymap.set("i", "{", "{}<Esc>ha", { silent = true })
@@ -32,6 +32,17 @@ vim.keymap.set("n", "<M-,>", "<c-w>5<")
 vim.keymap.set("n", "<M-.>", "<c-w>5>")
 vim.keymap.set("n", "<M-t>", "<C-W>+")
 vim.keymap.set("n", "<M-s>", "<C-W>-")
+-- Debugger nvim DAP
+vim.keymap.set("n", "<F5>", "<Cmd>lua require'dap'.continue()<CR>")
+vim.keymap.set("n", "<F10>", "<Cmd>lua require'dap'.step_over()<CR>")
+vim.keymap.set("n", "<F11>", "<Cmd>lua require'dap'.step_into()<CR>")
+vim.keymap.set("n", "<F12>", "<Cmd>lua require'dap'.step_out()<CR>")
+vim.keymap.set("n", "<leader>b", "<Cmd>lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set("n", "<leader>B", "<Cmd>lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>lp", "<Cmd>lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>")
+vim.keymap.set("n", "<leader>dr", "<Cmd>lua require'dap'.repl.open()<CR>")
+vim.keymap.set("n", "<leader>dl", "<Cmd>lua require'dap'.run_last()<CR>")
+
 
 -- Developement helpers
 vim.keymap.set("n", "<leader><leader>x", "<Cmd>source %<CR>", { silent = true })

@@ -93,6 +93,11 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Zig
 Plug 'ziglang/zig.vim'
 
+" Nvim DAP
+Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
+
 " Initialize plugin system
 call plug#end()
 
