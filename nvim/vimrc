@@ -98,6 +98,9 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
 
+" Curl.Nvim
+Plug 'oysandvik94/curl.nvim'
+
 " Initialize plugin system
 call plug#end()
 
