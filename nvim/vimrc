@@ -102,6 +102,8 @@ Plug 'rcarriga/nvim-dap-ui'
 " Curl.Nvim
 Plug 'oysandvik94/curl.nvim'
 
+Plug 'sindrets/diffview.nvim'
+
 " Initialize plugin system
 call plug#end()
 
