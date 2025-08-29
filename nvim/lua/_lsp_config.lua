@@ -100,7 +100,7 @@ local servers = {
     'csharp_ls',
     'rust_analyzer',
     'intelephense',
-    'tsserver',
+    'ts_ls',
     'eslint',
     'ocamllsp',
     'glslls',
