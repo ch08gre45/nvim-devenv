@@ -80,11 +80,3 @@ require'nvim-treesitter.configs'.setup {
     },
   }
 }
--- Inject proper languages in html file
-require("vim.treesitter.query").set("php", "injections", [[
-; inherits: html
-
-(text) @html
-
-(comment) @phpdoc
-]])
