@@ -108,17 +108,17 @@ local servers = {
     'ols',
 }
 for _, lsp in pairs(servers) do
-  require('lspconfig')[lsp].setup {
+  vim.lsp.config(lsp, {
     on_attach = on_attach,
     capabilities = capabilities,
     flags = {
       -- This will be the default in neovim 0.7+
       debounce_text_changes = 250,
     }
-  }
+  })
 end
 -- Special handling for lua_ls to make it neovim aware
-require'lspconfig'.lua_ls.setup {
+vim.lsp.config('lua_ls', {
   on_init = function(client)
     if client.workspace_folders then
       local path = client.workspace_folders[1].name
@@ -150,4 +150,9 @@ require'lspconfig'.lua_ls.setup {
   settings = {
     Lua = {}
   }
-}
+})
+
+for _, lsp in pairs(servers) do
+  vim.lsp.enable(lsp)
+end
+vim.lsp.enable('lua_ls')
